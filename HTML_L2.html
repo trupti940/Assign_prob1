@@ -1,0 +1,29 @@
+Explore the picture element and define multiple sources for responsive images. Try to figure out how it can affect the web vitals score of the page.
+ANS: The <picture> element in HTML allows you to define multiple sources for an image, enabling responsive images that can adapt to different screen sizes,
+     resolutions, and conditions. This helps improve the user experience and can positively impact the web vitals score of a page by ensuring that the appropriate image is loaded for each specific scenario.
+
+Explanation:
+<picture> Element:
+
+The <picture> element acts as a container for multiple <source> elements and one <img> element.
+Each <source> element specifies a different image file and conditions for when that file should be used.
+<source> Elements:
+
+The srcset attribute of each <source> element specifies the image file to be used.
+The media attribute specifies the media query condition for using the specified image.
+<img> Element:
+
+The <img> element is used as a fallback if none of the <source> conditions are met. It must always be the last child of the <picture> element.
+The alt attribute provides alternative text for the image, improving accessibility.
+Benefits for Web Vitals:
+Using the <picture> element for responsive images can have a significant positive impact on web vitals, particularly in the following areas:
+
+Largest Contentful Paint (LCP):
+
+Loading the appropriate image size for different devices and screen resolutions helps improve the LCP metric. Smaller images for mobile devices load faster, enhancing the user experience.
+Cumulative Layout Shift (CLS):
+
+Specifying the correct image dimensions and loading the appropriate image reduces layout shifts. This stability improves the CLS metric.
+First Input Delay (FID):
+
+While the <picture> element primarily affects LCP and CLS, it indirectly improves FID by ensuring that the page loads more efficiently and responds faster to user interactions.

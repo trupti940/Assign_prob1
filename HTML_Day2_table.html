@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Information</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Product Information Table</h2>
+
+<table id="productTable">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Quantity</th>
+            <th>Price per Unit</th>
+            <th>Description</th>
+            <th colspan="2">Total Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Product 1</td>
+            <td class="quantity">2</td>
+            <td class="price">10</td>
+            <td>This is product 1</td>
+            <td colspan="2" class="totalPrice"></td>
+        </tr>
+        <tr>
+            <td>Product 2</td>
+            <td class="quantity">3</td>
+            <td class="price">20</td>
+            <td>This is product 2</td>
+            <td colspan="2" class="totalPrice"></td>
+        </tr>
+        <tr>
+            <td colspan="4">Sum</td>
+            <td colspan="2" id="sumTotalPrice"></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function calculateTotalPrices() {
+        let sumTotalPrice = 0;
+        const rows = document.querySelectorAll("#productTable tbody tr");
+        rows.forEach(row => {
+            const quantityCell = row.querySelector(".quantity");
+            const priceCell = row.querySelector(".price");
+            if (quantityCell && priceCell) {
+                const quantity = parseFloat(quantityCell.textContent);
+                const price = parseFloat(priceCell.textContent);
+                const totalPrice = quantity * price;
+                row.querySelector(".totalPrice").textContent = totalPrice.toFixed(2);
+                sumTotalPrice += totalPrice;
+            }
+        });
+        document.getElementById("sumTotalPrice").textContent = sumTotalPrice.toFixed(2);
+    }
+
+    calculateTotalPrices();
+</script>
+
+</body>
+</html>
